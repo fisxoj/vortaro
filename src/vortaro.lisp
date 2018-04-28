@@ -1,14 +1,15 @@
 (defpackage :vortaro
   (:use #:cl
         #:nest
-        #:alexandria))
+        #:alexandria)
+  (:export #:run))
 
 (in-package #:vortaro)
 
 (defapp app
   :middlewares (lack.middleware.backtrace:*lack-middleware-backtrace*
                 lack.middleware.accesslog:*lack-middleware-accesslog*
-                lack.middleware.session:*lack-middleware-session*
+                ;; lack.middleware.session:*lack-middleware-session*
                 (clack-static-asset-middleware:*clack-static-asset-middleware*
                  :root #P"static/"
                  :path "static/")
@@ -44,3 +45,7 @@
       (render "word.html"
               :vorto "Vorto ne trovita"
               :status 404))))
+
+(defun run ()
+  (vortaro/datoj:load-dict)
+  (nest:start app))
