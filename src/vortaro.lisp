@@ -48,4 +48,12 @@
 
 (defun run ()
   (vortaro/datoj:load-dict)
-  (nest:start app))
+  (nest:start app
+              :address "::0"
+              :port (let ((port (config :port 7000)))
+                      (if (stringp port)
+                          (parse-integer port)
+                          port))
+              :debug (not (production-p))
+              :worker-num (config :workers 1)
+              :use-thread (not (production-p))))
