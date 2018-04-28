@@ -13,7 +13,7 @@
 (defun load-dict ()
   (setf *trie* (make-instance 'cl-trie:trie))
   (setf *dict* (make-hash-table :test 'equal))
-  (with-open-file (f "dictionaries/espdict.txt")
+  (with-open-file (f "dictionaries/espdict.txt" :external-format :utf-8)
     (flet ((insert-line (line trie)
              (let ((colon-position (position #\: line :test #'char=)))
                (when colon-position
