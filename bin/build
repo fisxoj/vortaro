@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Building app"
+sbcl --non-interactive \
+     --load bin/environment.lisp \
+     --load bin/build.lisp
