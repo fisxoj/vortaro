@@ -9,6 +9,11 @@
 {% endblock %}
 
 {% block main %}
-    <h1>{{ demando }}</h1>
+    <h1>Serĉ-rizultoj por <code>{{ demando }}</code></h1>
 
+    <ul>
+    {% for resulto in resultoj %}
+        <li><a href="/vorto/{{ resulto }}">{{ resulto }}</a></li>
+    {% endfor %}
+    </ul>
 {% endblock %}

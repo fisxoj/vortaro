@@ -8,5 +8,7 @@
                "lack-middleware-backtrace"
                "lack-middleware-session"
                "clack-static-asset-middleware"
-               "clack-static-asset-djula-helpers")
-  :components ((:file "vortaro")))
+               "clack-static-asset-djula-helpers"
+               "cl-trie")
+  :components ((:file "datoj")
+               (:file "vortaro")))

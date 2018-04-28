@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ vorto }} - Vortaro{% endblock %}
+
+{% block main %}
+    <h1>{{ vorto }}</h1>
+
+    {% for difino in difinoj %}
+        <p>{{ difino }}</p>
+    {% endfor %}
+{% endblock %}

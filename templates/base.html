@@ -7,13 +7,20 @@
         {% stylesheet-tag "milligram.min.css" %}
     </head>
     <body>
-        <nav>
+        <nav class="container">
             {% block nav %}
-                <a href="vortaro.org" title="Home">Vortaro</a>
+                <a href="/" title="Home">Vortaro</a>
+                {% block search %}
+                    <form action="/serĉi" method="POST">
+                        <input type="text" name="demando" placeholder="Serĉu" />
+                    </form>
+                {% endblock %}
             {% endblock %}
         </nav>
-        <main>{% block main %}{% endblock %}</main>
-        <footer>
+        <main class="container">
+            {% block main %}{% endblock %}
+        </main>
+        <footer class="container">
             {% block footer %}
                 vortaro.org created by <a href="http://fisxoj.net">fisxoj</a> and builds on the work of many others.  <a href="/thanks">Thanks!</a>
             {% endblock %}
