@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if error %}
+        Eraro!
+    {% else %}
+        {{ demando }} - Vortaro
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <h1>{{ demando }}</h1>
+
+{% endblock %}

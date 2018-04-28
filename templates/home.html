@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Vortaro{% endblock %}
+
+{% block main %}
+    <h1>Bonvenon!</h1>
+
+    <form action="/serĉi" method="POST">
+        <fieldset>
+            <label for="demando">Demando (search):</label>
+            <input type="text" name="demando" />
+        </fieldset>
+    </form>
+
+    <p>Bonvolu tajpi vian demandon en la serĉkampo kaj tasti la enenklavo por serĉi!</p>
+{% endblock %}

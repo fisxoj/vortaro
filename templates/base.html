@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}Vortaro{% endblock %}</title>
+        <meta charset="utf-8">
+        {% block head %}{% endblock %}
+        {% stylesheet-tag "milligram.min.css" %}
+    </head>
+    <body>
+        <nav>
+            {% block nav %}
+                <a href="vortaro.org" title="Home">Vortaro</a>
+            {% endblock %}
+        </nav>
+        <main>{% block main %}{% endblock %}</main>
+        <footer>
+            {% block footer %}
+                vortaro.org created by <a href="http://fisxoj.net">fisxoj</a> and builds on the work of many others.  <a href="/thanks">Thanks!</a>
+            {% endblock %}
+        </footer>
+    </body>
+</html>
