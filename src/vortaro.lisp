@@ -26,7 +26,7 @@
   (handler-case
       (let ((demando (vortaro/normaligi:normaligu (v:str (parameter :demando) :min-length 2 :max-length 100))))
         (if-let ((difino (vortaro/datoj:define demando)))
-          (redirect (format nil "/vorto/~a" demando))
+          (redirect (format nil "/vorto/~a" (quri:url-encode demando)))
           (render "result.html"
                   :demando demando
                   :resultoj (vortaro/datoj:suggest demando))))
