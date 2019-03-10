@@ -24,7 +24,7 @@
 
 (defroute app ("/serĉi" :post)
   (handler-case
-      (let ((demando (v:str (parameter :demando) :min-length 2 :max-length 100)))
+      (let ((demando (vortaro/normaligi:normaligu (v:str (parameter :demando) :min-length 2 :max-length 100))))
         (if-let ((difino (vortaro/datoj:define demando)))
           (redirect (format nil "/vorto/~a" demando))
           (render "result.html"

@@ -12,6 +12,7 @@
 
   :components ((:module "src"
                 :components ((:file "datoj")
+                             (:file "normaligi")
                              (:file "vortaro"))))
 
   :build-pathname "vortaro"
