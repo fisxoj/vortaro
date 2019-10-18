@@ -5,7 +5,7 @@
 (in-package #:vortaro/normaligi)
 
 
-(defparameter +afiksoj+ #(#\h #\x #\j #\'))
+(defparameter +afiksoj+ #(#\h #\x #\'))
 
 
 (defparameter +afikseblaj-karaktroj+ (list (cons #\c #\ĉ)
