@@ -5,7 +5,7 @@
 (format t "~& BUILDING STATIC BINARY ~%")
 (declaim (optimize speed space))
 
-(qlot:install)
+(qlot:install "vortaro")
 
 (let ((cwd (uiop:getcwd)))
   (qlot:with-local-quicklisp (cwd :central-registry (list cwd))

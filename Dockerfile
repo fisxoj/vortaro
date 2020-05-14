@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:stable-slim
 
 MAINTAINER fisxoj@gmail.com
 
@@ -13,7 +13,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install sbcl
-ENV SBCL_VERSION="1.4.1"
+ENV SBCL_VERSION="2.0.4"
 
 RUN curl -O -L https://downloads.sourceforge.net/project/sbcl/sbcl/${SBCL_VERSION}/sbcl-${SBCL_VERSION}-x86-64-linux-binary.tar.bz2 && \
     bzip2 -cd sbcl-${SBCL_VERSION}-x86-64-linux-binary.tar.bz2 | tar xvf - && \
@@ -34,7 +34,9 @@ COPY ./bin ./bin
 
 COPY qlfile qlfile.lock vortaro.asd ./
 
-RUN sbcl --non-interactive --load bin/environment.lisp --eval "(qlot:install)"
+RUN sbcl --non-interactive \
+        --load bin/environment.lisp \
+        --eval "(qlot:install \"vortaro\")"
 
 COPY . .
 
