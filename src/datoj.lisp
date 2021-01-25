@@ -14,18 +14,18 @@
   (setf *trie* (make-instance 'cl-trie:trie))
   (setf *dict* (make-hash-table :test 'equal))
   (with-open-file (f "dictionaries/espdict.txt" :external-format :utf-8)
-    (flet ((insert-line (line trie)
+    (flet ((insert-line (line)
              (let ((colon-position (position #\: line :test #'char=)))
                (when colon-position
                  (let ((word (subseq line 0 (- colon-position 1)))
                        (definition (subseq line (+ colon-position 2))))
-                   (setf (cl-trie:lookup trie word)
-                         (1+ (cl-trie:lookup trie word 0)))
+                   (setf (cl-trie:lookup *trie* word)
+                         (1+ (cl-trie:lookup *trie* word 0)))
                    ;; (format t "~&Inserting ~a: ~a" word definition)
                    (alexandria:appendf (gethash word *dict* nil) `(,definition)))))))
-      (loop :for line = (read-line f nil 'eof)
-            :until (eq line 'eof)
-            :do (insert-line line *trie*))))
+      (loop :for line = (read-line f nil nil)
+            :while line
+            :do (insert-line line))))
   *trie*)
 
 
