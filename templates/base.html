@@ -7,22 +7,34 @@
         {% stylesheet-tag "milligram.min.css" %}
     </head>
     <body>
-        <nav class="container">
+        <nav class="container" style="background-color:#173e22;border-radius:0 0 5px 5px;margin-bottom:2rem;">
             {% block nav %}
-                <a href="/" title="Home">Vortaro</a>
-                {% block search %}
-                    <form action="/serĉi" method="POST">
-                        <input type="text" name="demando" placeholder="Serĉu" autofocus />
-                    </form>
-                {% endblock %}
+                <div class="row">
+                    <div class="column">
+                        <a href="/" title="Home" style="color:white;font-weight:bold">Vortaro</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        {% block search %}
+                            <form action="/serĉi" method="POST">
+                                <input type="text" name="demando" placeholder="Serĉu" autofocus style="background-color:white" />
+                            </form>
+                        {% endblock %}
+                    </div>
+                </div>
             {% endblock %}
         </nav>
-        <main class="container">
+        <main class="container" {% block main-attributes %}{% endblock %}>
             {% block main %}{% endblock %}
         </main>
         <footer class="container">
             {% block footer %}
-                vortaro.org created by <a href="http://fisxoj.net">fisxoj</a> and builds on the work of many others.  <a href="/thanks">Thanks!</a>
+                <div class="row">
+                    <p class="column">
+                        vortaro.org created by <a href="http://fisxoj.net">fisxoj</a> and builds on the work of many others.  <a href="/thanks">Thanks!</a>
+                    </p>
+                </div>
             {% endblock %}
         </footer>
     </body>

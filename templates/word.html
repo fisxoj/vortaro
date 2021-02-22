@@ -2,10 +2,14 @@
 
 {% block title %}{{ vorto }} - Vortaro{% endblock %}
 
-{% block main %}
-    <h1>{{ vorto }}</h1>
+{% block main-attributes %}itemscope itemtype="https://schema.org/DefinedTerm"{% endblock %}
 
-    {% for difino in difinoj %}
-        <p>{{ difino }}</p>
-    {% endfor %}
+{% block main %}
+    <h1 itemprop="name">{{ vorto }}</h1>
+
+    <ol itemprop="description">
+        {% for difino in difinoj %}
+            <li>{{ difino }}</li>
+        {% endfor %}
+    </ol>
 {% endblock %}
