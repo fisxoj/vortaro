@@ -12,15 +12,23 @@ RUN apt-get update && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY ./bin ./bin
+COPY ./bin /app/bin
 
-COPY qlfile qlfile.lock vortaro.asd ./
+RUN git clone --branch 0.8.0 --depth=1 https://github.com/fisxoj/validate.git /quicklisp/local-projects/validate
+RUN git clone --branch 0.3.4 --depth=1 https://gitlab.com/knttl/nest.git /quicklisp/local-projects/nest
+
+# Precompile some of the libraries
+RUN sbcl --non-interactive \
+        --load bin/environment.lisp \
+        --eval "(ql:quickload :nest)"
+
+COPY vortaro.asd /app/
+
+COPY ./ /app/
 
 RUN sbcl --non-interactive \
         --load bin/environment.lisp \
         --eval "(ql:quickload :vortaro)"
-
-COPY . .
 
 RUN ./bin/build
 
