@@ -13,7 +13,7 @@
 (defun load-dict ()
   (setf *trie* (make-instance 'cl-trie:trie))
   (setf *dict* (make-hash-table :test 'equal))
-  (with-open-file (f "dictionaries/espdict.txt" :external-format :utf-8)
+  (with-open-file (f (asdf:system-relative-pathname :vortaro "dictionaries/espdict.txt") :external-format :utf-8)
     (flet ((insert-line (line)
              (let ((colon-position (position #\: line :test #'char=)))
                (when colon-position
