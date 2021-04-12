@@ -7,9 +7,7 @@
 (in-package #:vortaro)
 
 (defapp app
-  :middlewares (lack.middleware.backtrace:*lack-middleware-backtrace*
-                lack.middleware.accesslog:*lack-middleware-accesslog*
-                ;; lack.middleware.session:*lack-middleware-session*
+  :middlewares (nest/middlewares/beaver:+beaver-middleware+
                 (clack-static-asset-middleware:*clack-static-asset-middleware*
                  :root #P"static/"
                  :path "static/")

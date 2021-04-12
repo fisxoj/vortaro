@@ -2,6 +2,7 @@
   :author "Matt Novenstern <fisxoj@gmail.com>"
 
   :depends-on ("nest"
+               "nest/middlewares/beaver"
                "alexandria"
                "validate"
                "lack-middleware-accesslog"
