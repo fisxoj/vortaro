@@ -15,7 +15,8 @@ RUN apt-get update && \
 COPY ./bin /app/bin
 
 RUN git clone --branch 0.8.0 --depth=1 https://github.com/fisxoj/validate.git /quicklisp/local-projects/validate
-RUN git clone --branch 0.3.4 --depth=1 https://gitlab.com/knttl/nest.git /quicklisp/local-projects/nest
+RUN git clone --branch 0.4.0 --depth=1 https://gitlab.com/knttl/nest.git /quicklisp/local-projects/nest
+RUN git clone --branch master --depth=1 https://gitlab.com/fisxoj/beaver.git /quicklisp/local-projects/beaver
 
 # Precompile some of the libraries
 RUN sbcl --non-interactive \
